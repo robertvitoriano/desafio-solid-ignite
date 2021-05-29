@@ -19,11 +19,30 @@ class UsersRepository implements IUsersRepository {
   }
 
   create({ name, email }: ICreateUserDTO): User {
-    // Complete aqui
+    console.log("EMAIL ", email);
+    console.log("NAME ", name);
+
+    const user = new User();
+
+    Object.assign(user, {
+      name,
+      email,
+      created_at: new Date(),
+      updated_at: new Date(),
+      admin: false,
+    });
+
+    console.log("DADOS DO USUARIO ", user);
+
+    this.users.push(user);
+
+    return user;
   }
 
   findById(id: string): User | undefined {
-    // Complete aqui
+    const user = this.users.find((user) => user.id);
+
+    return user;
   }
 
   findByEmail(email: string): User | undefined {
