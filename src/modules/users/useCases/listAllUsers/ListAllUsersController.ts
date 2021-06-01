@@ -6,7 +6,10 @@ class ListAllUsersController {
   constructor(private listAllUsersUseCase: ListAllUsersUseCase) {}
 
   handle(request: Request, response: Response): Response {
-    // Complete aqui
+
+    const 
+
+   return response.json(this.listAllUsersUseCase.execute({user_id:request.user_id}))
   }
 }
 

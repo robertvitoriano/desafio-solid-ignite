@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+
 import { Response, Request } from "express";
 
 import { CreateUserUseCase } from "./CreateUserUseCase";
