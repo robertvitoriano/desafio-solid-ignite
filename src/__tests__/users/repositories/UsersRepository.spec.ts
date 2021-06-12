@@ -12,12 +12,12 @@ describe("UsersRepository", () => {
   it("should be able to create new users", () => {
     const user = usersRepository.create({
       name: "Vinicius Fraga",
-      email: "vinifraga@rocketseat.com",
+      email: "vini@rocketseat.com",
     });
 
     expect(user).toMatchObject({
       name: "Vinicius Fraga",
-      email: "vinifraga@rocketseat.com",
+      email: "vini@rocketseat.com",
       admin: false,
     });
     expect(validate(user.id)).toBe(true);
@@ -57,7 +57,7 @@ describe("UsersRepository", () => {
   it("should be able to find user by e-mail address", () => {
     const user = usersRepository.create({
       name: "Vinicius Fraga",
-      email: "vinifraga@rocketseat.com",
+      email: "vinifragaa@rocketseat.com",
     });
 
     const findUser = usersRepository.findByEmail(user.email);
@@ -75,7 +75,7 @@ describe("UsersRepository", () => {
   it("should be able to turn an user as admin", () => {
     const user = usersRepository.create({
       name: "Vinicius Fraga",
-      email: "vinifraga@rocketseat.com",
+      email: "vinifragaaa@rocketseat.com",
     });
 
     const admin = usersRepository.turnAdmin(user);

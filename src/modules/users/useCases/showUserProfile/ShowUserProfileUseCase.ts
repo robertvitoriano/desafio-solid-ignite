@@ -8,8 +8,25 @@ interface IRequest {
 class ShowUserProfileUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
-  execute({ user_id }: IRequest): User {
-    // Complete aqui
+  execute({ user_id }): User {
+
+    try {
+      const user = this.usersRepository.findById(user_id)
+
+      return user
+      
+    } catch (error) {
+
+
+      throw new Error(error.meesage);
+      
+      
+    }
+
+
+   
+
+
   }
 }
 

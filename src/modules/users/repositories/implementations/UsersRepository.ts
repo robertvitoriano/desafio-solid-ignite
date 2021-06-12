@@ -19,8 +19,15 @@ class UsersRepository implements IUsersRepository {
   }
 
   create({ name, email }: ICreateUserDTO): User {
- 
+
+    const usersExists = this.users.some(( user ) => user.email === email )
+
+    if(usersExists) throw new Error("Email already taken !");
+    
+
     const user = new User();
+
+
 
     Object.assign(user, {
       name,
@@ -30,24 +37,25 @@ class UsersRepository implements IUsersRepository {
       admin: false,
     });
 
-    console.log("DADOS DO USUARIO ", user);
 
     this.users.push(user);
 
     return user;
   }
 
-  findById(id: string): User | undefined {
-    const user = this.users.find((user) => user.id);
+  findById(id: string): User{
+    const user = this.users.find((user)=>user.id === id)
 
-    return user;
+    if(!user)  throw new Error('User not Found !')
+
+    return user
   }
 
-  findByEmail(email: string): User | undefined {
+  findByEmail(email: string): User {
 
     const user = this.users.find((user)=>user.email === email)
 
-    if(!user) return undefined
+    if(!user)  throw new Error('User not Found !')
 
     return user
   }
@@ -65,6 +73,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   list(): User[] {
+
 
     return this.users
   }
